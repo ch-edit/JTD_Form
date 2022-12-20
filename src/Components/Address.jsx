@@ -110,18 +110,18 @@ const Address = ({
         </p>
       </div> */}
       <div id='dg_widget'></div>
-      <div className={`button_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
+      {/* <div className={`button_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
         <button
           className='previous'
           onClick={() => handleStepChange(-1)}>
           Previous
         </button>
-        {/* <button
+        <button
           type='submit'
           className='next'>
           Submit Details
-        </button> */}
-      </div>
+        </button>
+      </div> */}
     </div>
   );
 };

@@ -74,11 +74,11 @@ const PersonalInfo = ({ firstName, lastName, email, postcode, handleInputs, hand
         </div>
       </div>
       <div className={`button_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
-        <button
+        {/* <button
           className='previous'
           onClick={() => handleStepChange(-1)}>
           Previous
-        </button>
+        </button> */}
         <button
           className='next'
           onClick={() => handleStepChange(1)}>
