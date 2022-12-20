@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import Intro from './Components/Intro';
 import PersonalInfo from './Components/PersonalInfo';
@@ -6,16 +6,16 @@ import Address from './Components/Address';
 import ThankYou from './Components/ThankYou';
 
 function App() {
-  //IAB adSizes
+  const dataGuard_Script = useRef(null);
 
+  //IAB ADVERTISEMENT SIZES
   const [adSizes, setSizes] = useState('mediumRectangle');
 
   const handleAdSizes = (dimensions) => {
     setSizes(dimensions);
   };
 
-  //Inputs
-
+  //CONTROLLED INPUTS
   const [inputs, setInputs] = useState({
     firstName: '',
     lastName: '',
@@ -25,49 +25,45 @@ function App() {
   });
 
   const handleInputs = (e) => {
-    console.log({ [e.target.name]: e.target.value });
     setInputs({
       ...inputs,
       [e.target.name]: e.target.value,
     });
   };
 
-  //Form step
-
+  //FORM STEPS
   const [step, setStep] = useState(0);
 
-  const handleClick = (value) => {
+  const handleStepChange = (value) => {
     setStep(step + value);
   };
 
-  //Submission
-
-  const handleSubmit = () => {
-    alert(JSON.stringify(inputs));
-    handleClick();
-    setStep(3);
-  };
+  //SUBMISSION
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setStep(3);
+  // };
 
   const formSteps = [
-    <Intro handleClick={handleClick} adSizes={adSizes} />,
+    <Intro
+      adSizes={adSizes}
+      handleStepChange={handleStepChange}
+    />,
     <PersonalInfo
-      handleClick={handleClick}
       step={step}
       {...inputs}
-      handleInputs={handleInputs}
       adSizes={adSizes}
+      handleInputs={handleInputs}
+      handleStepChange={handleStepChange}
     />,
     <Address
-      handleClick={handleClick}
       step={step}
-      postcode={inputs.postcode}
-      address={inputs.address}
-      handleInputs={handleInputs}
+      {...inputs}
       adSizes={adSizes}
-      handleSubmit={handleSubmit}
+      handleInputs={handleInputs}
+      handleStepChange={handleStepChange}
     />,
     <ThankYou
-      handleClick={handleClick}
       step={step}
       firstName={inputs.firstName}
       adSizes={adSizes}
@@ -80,30 +76,31 @@ function App() {
       <div className='button_container'>
         <button
           className='previous'
-          onClick={() => handleAdSizes('mediumRectangle')}
-        >
+          onClick={() => handleAdSizes('mediumRectangle')}>
           Medium Rectangle
           <br />
           (300x 250)
         </button>
         <button
           className='previous'
-          onClick={() => handleAdSizes('leaderboard')}
-        >
+          onClick={() => handleAdSizes('leaderboard')}>
           Leaderboard
           <br />
           (728 x 90)
         </button>
         <button
           className='previous'
-          onClick={() => handleAdSizes('skyscraper')}
-        >
+          onClick={() => handleAdSizes('skyscraper')}>
           Skyscraper
           <br />
           (160 x 600)
         </button>
       </div>
-      <form className={`${adSizes} form_container`}>{formSteps[step]}</form>
+      <form
+        // onSubmit={handleSubmit}
+        className={`${adSizes} form_container`}>
+        {formSteps[step]}
+      </form>
     </div>
   );
 }

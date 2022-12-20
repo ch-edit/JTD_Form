@@ -2,17 +2,18 @@ import React, { useEffect } from 'react';
 import newWindowIcon from '../assets/icon_newWindow.png';
 
 const Address = ({
+  firstName,
+  lastName,
+  email,
   postcode,
   address,
   privacyPolicy,
-  handleClick,
+  handleStepChange,
   handleInputs,
   adSizes,
-  handleSubmit,
 }) => {
   useEffect(() => {
-    const dgScript = document.createElement('script');
-    dgScript.textContent = `StatelessWidget.load({
+    const DG_config = {
       id: 'dg_widget',
       templateId: 'hqGAW5UsmUK',
       uniqueReference: 'jTD_test',
@@ -22,60 +23,67 @@ const Address = ({
       display: {
         applyDefaultStyle: false,
         location: 'inside',
-        displayButtons: false,
+        closeOnSubmit: false,
+        displayCancelButtons: false,
         consentricLogo: false,
       },
+
       events: {
+        onUpdate: (state) => {
+          console.log('Current state:', state);
+        },
         onSuccess: (response, submission) => {
+          handleStepChange(1);
           console.log('Response body:', response);
           console.log('Submission sent to DataGuard:', submission);
         },
         onFailure: (error, submission) => {
           console.log('Error:', error);
           console.log('Submission sent to DataGuard:', submission);
-        }
+        },
       },
 
-    })`;
+      dataSharing: {
+        partner: 'Join-the-Dots',
+        data: {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          postcode: postcode,
+          address: address,
+        },
+      },
+    };
+
+    const widget = (config) => {
+      StatelessWidget.load(config);
+      console.table(config.dataSharing.data);
+    };
+
+    const dgScript = document.createElement('script');
+
     document.body.appendChild(dgScript);
+    dgScript.addEventListener('load', widget(DG_config));
+
     return () => {
       document.body.removeChild(dgScript);
     };
-  }, []);
+  }, [address]);
 
   return (
-    <div
-      className={`formStep_container ${
-        adSizes === 'leaderboard' ? 'flex_row' : 'flex_column'
-      }`}
-    >
-      <div
-        className={`input_container ${
-          adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'
-        }`}
-      >
+    <div className={`formStep_container ${adSizes === 'leaderboard' ? 'flex_row' : 'flex_column'}`}>
+      <div className={`input_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
         <label htmlFor='address'>Select Address:</label>
         <select
           name='address'
           id='address'
           value={address}
-          onChange={handleInputs}
-        >
-          <option value='Address 1'>
-            Address 1 {postcode && `for ${postcode}`}
-          </option>
-          <option value='Address 2'>
-            Address 2 {postcode && `for ${postcode}`}
-          </option>
-          <option value='Address 3'>
-            Address 3 {postcode && `for ${postcode}`}
-          </option>
-          <option value='Address 4'>
-            Address 4 {postcode && `for ${postcode}`}
-          </option>
-          <option value='Address 5'>
-            Address 5 {postcode && `for ${postcode}`}
-          </option>
+          onChange={handleInputs}>
+          <option value='Address 1'>Address 1 {postcode && `for ${postcode}`}</option>
+          <option value='Address 2'>Address 2 {postcode && `for ${postcode}`}</option>
+          <option value='Address 3'>Address 3 {postcode && `for ${postcode}`}</option>
+          <option value='Address 4'>Address 4 {postcode && `for ${postcode}`}</option>
+          <option value='Address 5'>Address 5 {postcode && `for ${postcode}`}</option>
         </select>
       </div>
       {/* <div className='privacy_container'>
@@ -102,17 +110,17 @@ const Address = ({
         </p>
       </div> */}
       <div id='dg_widget'></div>
-      <div
-        className={`button_container ${
-          adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'
-        }`}
-      >
-        <button className='previous' onClick={() => handleClick(-1)}>
+      <div className={`button_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
+        <button
+          className='previous'
+          onClick={() => handleStepChange(-1)}>
           Previous
         </button>
-        <button type='submit' className='next' onClick={handleSubmit}>
+        {/* <button
+          type='submit'
+          className='next'>
           Submit Details
-        </button>
+        </button> */}
       </div>
     </div>
   );

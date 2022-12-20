@@ -71,6 +71,36 @@ a {
   text-decoration: underline;
 }
 
+.form_container {
+  width: 300px;
+  height: 250px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  margin: 4rem auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: width 1s, height 1s;
+}
+
+.mediumRectangle {
+  width: 300px;
+  height: 250px;
+}
+
+.leaderboard {
+  width: 728px;
+  height: 90px;
+}
+
+.skyscraper {
+  width: 160px;
+  height: 600px;
+}
+
 .formStep_container {
   padding: 1.2rem;
   width: 100%;
@@ -97,36 +127,6 @@ a {
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.form_container {
-  width: 300px;
-  height: 250px;
-  border-radius: 25px;
-  background-color: #ffffff;
-  margin: 0 auto;
-  margin: 4rem auto;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  transition: width 1s, height 1s;
-}
-
-.mediumRectangle {
-  width: 300px;
-  height: 250px;
-}
-
-.leaderboard {
-  width: 728px;
-  height: 90px;
-}
-
-.skyscraper {
-  width: 160px;
-  height: 600px;
 }
 
 .input_container {
@@ -166,8 +166,7 @@ a {
 .input_container > select:hover,
 .input_container > select:focus {
   border-color: #00cede;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
-    0 0 8px rgba(0, 206, 222, 0.6);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 206, 222, 0.6);
 }
 
 label.privacy_policy {
@@ -277,4 +276,16 @@ input[type='radio']:checked:after {
 
 .mld-policy a {
   font-size: 1.2rem;
+}
+
+.mld-pc-app__footer {
+  margin-top: 1rem;
+}
+
+.mld-pc-button--submit {
+  background-color: #0f2841;
+}
+
+.mld-pc-button--submit:hover {
+  background-color: #fb5a4b;
 }

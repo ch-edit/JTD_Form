@@ -1,23 +1,14 @@
 import React from 'react';
 
-const PersonalInfo = ({
-  firstName,
-  lastName,
-  email,
-  postcode,
-  handleInputs,
-  handleClick,
-  adSizes,
-}) => {
+const PersonalInfo = ({ firstName, lastName, email, postcode, handleInputs, handleStepChange, adSizes }) => {
   return (
-    <div
-      className={`formStep_container ${
-        adSizes === 'leaderboard' ? 'flex_row' : 'flex_column'
-      }`}
-    >
+    <div className={`formStep_container ${adSizes === 'leaderboard' ? 'flex_row' : 'flex_column'}`}>
       <div>
         <div className='input_container'>
-          <label className='label_personalInfo' htmlFor='firstName'>
+          <label
+            className='label_personalInfo'
+            htmlFor='firstName'
+            aria-label='First Name'>
             First Name:
           </label>
           <input
@@ -31,7 +22,10 @@ const PersonalInfo = ({
         </div>
 
         <div className='input_container'>
-          <label className='label_personalInfo' htmlFor='lastName'>
+          <label
+            className='label_personalInfo'
+            htmlFor='lastName'
+            aria-label='Last Name'>
             Last Name:
           </label>
           <input
@@ -46,7 +40,10 @@ const PersonalInfo = ({
       </div>
       <div>
         <div className='input_container'>
-          <label className='label_personalInfo' htmlFor='email'>
+          <label
+            className='label_personalInfo'
+            htmlFor='email'
+            aria-label='Aemail Address'>
             Email:
           </label>
           <input
@@ -60,7 +57,10 @@ const PersonalInfo = ({
         </div>
 
         <div className='input_container'>
-          <label className='label_personalInfo' htmlFor='postcode'>
+          <label
+            className='label_personalInfo'
+            htmlFor='postcode'
+            aria-label='Postcode'>
             Postcode:
           </label>
           <input
@@ -73,15 +73,15 @@ const PersonalInfo = ({
           />
         </div>
       </div>
-      <div
-        className={`button_container ${
-          adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'
-        }`}
-      >
-        <button className='previous' onClick={() => handleClick(-1)}>
+      <div className={`button_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
+        <button
+          className='previous'
+          onClick={() => handleStepChange(-1)}>
           Previous
         </button>
-        <button className='next' onClick={() => handleClick(1)}>
+        <button
+          className='next'
+          onClick={() => handleStepChange(1)}>
           Next
         </button>
       </div>
