@@ -55,8 +55,9 @@ h2 {
 h3 {
   color: #666666;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 0.5rem auto;
+  line-height: 1.5;
 }
 
 p {
@@ -70,6 +71,7 @@ a {
   font-weight: 700;
   text-decoration: underline;
 }
+
 
 .form_container {
   width: 300px;
@@ -92,8 +94,8 @@ a {
 }
 
 .leaderboard {
-  width: 728px;
-  height: 90px;
+  width: 300px;
+  height: 600px;
 }
 
 .skyscraper {
@@ -103,7 +105,7 @@ a {
 
 .formStep_container {
   padding: 1.2rem;
-  width: 100%;
+  width: 90%;
   animation: fadeIn 400ms;
   display: flex;
 }
@@ -129,7 +131,11 @@ a {
   }
 }
 
-.input_container {
+.double_input_container {
+  width: 100%;
+}
+
+.single_input_container {
   flex-grow: 0.5;
   padding: 0.5rem;
   display: flex;
@@ -138,19 +144,19 @@ a {
   color: #666666;
 }
 
-.input_container .label_personalInfo {
+.single_input_container .label_personalInfo {
   display: none;
 }
 
-.input_container > label {
+.single_input_container > label {
   color: #0f2841;
   font-size: 1rem;
   color: #666666;
   line-height: 1.2;
 }
 
-.input_container > input,
-.input_container > select {
+.single_input_container > input,
+.single_input_container > select {
   width: 100%;
   padding: 0.6rem;
   border-radius: 8px;
@@ -161,10 +167,10 @@ a {
   color: #666666;
 }
 
-.input_container > input:hover,
-.input_container > input:focus,
-.input_container > select:hover,
-.input_container > select:focus {
+.single_input_container > input:hover,
+.single_input_container > input:focus,
+.single_input_container > select:hover,
+.single_input_container > select:focus {
   border-color: #00cede;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 206, 222, 0.6);
 }
@@ -219,16 +225,12 @@ button.next:hover {
 
 /* DATAGUARD STYLES */
 
-/* #dg_widget {
-  border: 2px solid #003349;
-  border-radius: 10px;
-} */
-
 .mld-pc-option-container {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
+
 .mld-pc-toggle {
   display: flex;
   align-items: center;

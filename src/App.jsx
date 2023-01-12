@@ -84,14 +84,14 @@ function App() {
         <button
           className='previous'
           onClick={() => handleAdSizes('leaderboard')}>
-          Leaderboard
+          Half Page
           <br />
-          (728 x 90)
+          (300 x 600)
         </button>
         <button
           className='previous'
           onClick={() => handleAdSizes('skyscraper')}>
-          Skyscraper
+          Wide Skyscraper
           <br />
           (160 x 600)
         </button>

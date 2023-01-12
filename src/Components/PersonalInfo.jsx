@@ -2,9 +2,9 @@ import React from 'react';
 
 const PersonalInfo = ({ firstName, lastName, email, postcode, handleInputs, handleStepChange, adSizes }) => {
   return (
-    <div className={`formStep_container ${adSizes === 'leaderboard' ? 'flex_row' : 'flex_column'}`}>
-      <div>
-        <div className='input_container'>
+    <div className='formStep_container flex_column'>
+      <div className='double_input_container'>
+        <div className='single_input_container'>
           <label
             className='label_personalInfo'
             htmlFor='firstName'
@@ -20,8 +20,8 @@ const PersonalInfo = ({ firstName, lastName, email, postcode, handleInputs, hand
             onChange={handleInputs}
           />
         </div>
-
-        <div className='input_container'>
+        
+        <div className='single_input_container'>
           <label
             className='label_personalInfo'
             htmlFor='lastName'
@@ -38,8 +38,9 @@ const PersonalInfo = ({ firstName, lastName, email, postcode, handleInputs, hand
           />
         </div>
       </div>
-      <div>
-        <div className='input_container'>
+
+      <div className='double_input_container'>
+        <div className='single_input_container'>
           <label
             className='label_personalInfo'
             htmlFor='email'
@@ -56,7 +57,7 @@ const PersonalInfo = ({ firstName, lastName, email, postcode, handleInputs, hand
           />
         </div>
 
-        <div className='input_container'>
+        <div className='single_input_container'>
           <label
             className='label_personalInfo'
             htmlFor='postcode'
@@ -73,7 +74,7 @@ const PersonalInfo = ({ firstName, lastName, email, postcode, handleInputs, hand
           />
         </div>
       </div>
-      <div className={`button_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
+      <div className='button_container'>
         {/* <button
           className='previous'
           onClick={() => handleStepChange(-1)}>

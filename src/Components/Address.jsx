@@ -16,9 +16,9 @@ const Address = ({
     const DG_config = {
       id: 'dg_widget',
       templateId: 'hqGAW5UsmUK',
-      uniqueReference: 'jTD_test',
-      channel: 'ad banner',
-      campaign: 'JTD TEST',
+      uniqueReference: `JtD_test-${email}`,
+      channel: 'Ad Banner',
+      campaign: 'JTD Demo',
 
       display: {
         applyDefaultStyle: false,
@@ -71,8 +71,8 @@ const Address = ({
   }, [address]);
 
   return (
-    <div className={`formStep_container ${adSizes === 'leaderboard' ? 'flex_row' : 'flex_column'}`}>
-      <div className={`input_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
+    <div className='formStep_container flex_column' >
+      <div className={`single_input_container address_input_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
         <label htmlFor='address'>Select Address:</label>
         <select
           name='address'
@@ -110,7 +110,7 @@ const Address = ({
         </p>
       </div> */}
       <div id='dg_widget'></div>
-      {/* <div className={`button_container ${adSizes === 'mediumRectangle' ? 'flex_row' : 'flex_column'}`}>
+      {/* <div className='button_container flex_column'>
         <button
           className='previous'
           onClick={() => handleStepChange(-1)}>
