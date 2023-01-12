@@ -3,7 +3,7 @@ import Logo from '../assets/logo_JtD.png';
 
 const ThankYou = ({ firstName, adSizes }) => {
   return (
-    <div className={`formStep_container ${adSizes === 'leaderboard' ? 'flex_row' : 'flex_column'}`}>
+    <div className='formStep_container flex_column'>
       <a
         href='https://wejointhedots.co.uk/'
         target='_blank'>
