@@ -44,7 +44,7 @@ const Address = ({
       },
 
       dataSharing: {
-        partner: 'Join-the-Dots',
+        partner: 'Join the Dots',
         data: {
           firstName: firstName,
           lastName: lastName,
@@ -53,10 +53,18 @@ const Address = ({
           address: address,
         },
       },
+
+      contactDetails: {
+        verification: {
+          email: email
+        }
+    }
+
+
     };
 
     const widget = (config) => {
-      StatelessWidget.load(config);
+      ExpressStatelessCapturePoint.load(config);
       console.table(config.dataSharing.data);
     };
 
